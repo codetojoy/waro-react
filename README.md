@@ -45,5 +45,6 @@ $ npx --version
 npx create-react-app . 
 npm install redux
 npm install react-redux
+npm install react-router-dom@5
 ```
 

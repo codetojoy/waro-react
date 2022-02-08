@@ -10,6 +10,9 @@ import About from "./pages/About";
 import Error from "./pages/Error";
 import Sandbox from "./pages/Sandbox";
 
+import NewPlayer from "./pages/Config/NewPlayer";
+import PlayerConfig from "./pages/Config/PlayerConfig";
+
 import "./App.css";
 
 function App() {
@@ -26,8 +29,14 @@ function App() {
         <Route path="/game">
           <Game />
         </Route>
-        <Route path="/config">
+        <Route path="/config" exact>
           <Config />
+        </Route>
+        <Route path="/config/player/new" exact>
+          <NewPlayer />
+        </Route>
+        <Route path="/config/player/:playerName">
+          <PlayerConfig />
         </Route>
         <Route path="/stats">
           <Stats />

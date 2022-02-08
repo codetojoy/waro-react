@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { configActions } from "../store/config-slice";
 
-const Config = (props) => {
+const Sandbox = (props) => {
   const dispatch = useDispatch();
   const config = useSelector((state) => {
     return state.config;
   });
   const clickHandler = (event) => {
-    console.log(`TRACER Config.clickHandler`);
+    console.log(`TRACER Sandbox.clickHandler`);
     dispatch(configActions.playerWinsGame({ name: "Mozart" }));
   };
   const items = config.players.map((p) => (
@@ -24,4 +24,4 @@ const Config = (props) => {
   );
 };
 
-export default Config;
+export default Sandbox;

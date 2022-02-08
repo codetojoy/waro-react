@@ -16,15 +16,15 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
-* scaffold routes
-    - config
-    - stats
-    - game
-* basic redux
-* canary test
+* store config in firebase
+* X: scaffold routes
+* X: basic redux
+* X: canary test
 
-## Notes
+Notes:
+---------
 
+* to setup: `./install.sh`
 * to run: `./run.sh`
 * to test: `./test.sh`
 
@@ -46,5 +46,6 @@ npx create-react-app .
 npm install redux
 npm install react-redux
 npm install react-router-dom@5
+npm install "@reduxjs/toolkit"
 ```
 

@@ -8,6 +8,7 @@ import Config from "./pages/Config";
 import Stats from "./pages/Stats";
 import About from "./pages/About";
 import Error from "./pages/Error";
+import Sandbox from "./pages/Sandbox";
 
 import "./App.css";
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/sandbox">
+          <Sandbox />
         </Route>
         <Route path="*">
           <Error />

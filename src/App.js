@@ -4,7 +4,7 @@ import MainHeader from "./components/MainHeader/MainHeader";
 
 import Welcome from "./pages/Welcome";
 import Game from "./pages/Game";
-import Config from "./pages/Config";
+import Config from "./pages/Config/Config";
 import Stats from "./pages/Stats";
 import About from "./pages/About";
 import Error from "./pages/Error";

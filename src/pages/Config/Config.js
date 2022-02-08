@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { configActions } from "../store/config-slice";
+import { configActions } from "../../store/config-slice";
 
 const Config = (props) => {
   const dispatch = useDispatch();

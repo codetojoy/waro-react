@@ -4,8 +4,8 @@ import * as C from "../C";
 
 export const initConfigState = {
   players: [
-    { name: "Chopin", strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
-    { name: "Mozart", strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
+    { name: C.PLAYER_1, strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
+    { name: C.PLAYER_2, strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
     { name: C.PLAYER_USERNAME, strategy: C.STRATEGY_UI, numGamesWon: 0, cards: [], numPointsForRound: 0 },
   ],
   numCards: 32,

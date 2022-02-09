@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { configActions } from "../../store/config-slice";
 
 const PlayerConfig = (props) => {
+  const strategyRef = useRef();
   const params = useParams();
   const playerName = params.playerName;
   const dispatch = useDispatch();
@@ -22,8 +24,8 @@ const PlayerConfig = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
   };
-  const selectHandler = (event) => {
-    const strategy = event.value;
+  const selectHandler = () => {
+    const strategy = strategyRef.current.value;
     dispatch(configActions.setPlayerStrategy({ name: player.name, strategy: strategy }));
   };
 
@@ -32,10 +34,18 @@ const PlayerConfig = (props) => {
       <p>PlayerConfig page for {player.name}</p>
       <form onSubmit={submitHandler}>
         <label htmlFor="strategy">Strategy</label>
-        <select onChange={selectHandler} name="strategy" id="strategy" value={player.strategy}>
+        <select
+          data-testid="strategySelect"
+          onChange={selectHandler}
+          name="strategy"
+          id="strategy"
+          value={player.strategy}
+          ref={strategyRef}
+        >
           {options}
         </select>
       </form>
+      <Link to="/config">Back</Link>
     </div>
   );
 };

@@ -9,6 +9,12 @@ export const initConfigState = {
     { name: C.PLAYER_USERNAME, strategy: C.STRATEGY_UI, numGamesWon: 0, cards: [], numPointsForRound: 0 },
   ],
   numCards: 32,
+  visibleStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD],
+  allStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD, C.STRATEGY_UI],
+};
+
+const findPlayerByName = (name, players) => {
+  return players.find((p) => p.name === name);
 };
 
 export const configSlice = createSlice({
@@ -26,8 +32,15 @@ export const configSlice = createSlice({
     playerWinsGame(state, action) {
       const obj = action.payload;
       const name = obj.name;
-      const player = state.players.find((p) => p.name === name);
+      const player = findPlayerByName(name, state.players);
       player.numGamesWon += 1;
+    },
+    setPlayerStrategy(state, action) {
+      const obj = action.payload;
+      const name = obj.name;
+      const strategy = obj.strategy;
+      const player = findPlayerByName(name, state.players);
+      player.strategy = strategy;
     },
   },
 });

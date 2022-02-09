@@ -2,6 +2,10 @@
   list-style-type: none;
 }
 
+.playerList li a {
+  text-decoration: none;
+}
+
 .config {
   font-size: 2.2rem;
 }

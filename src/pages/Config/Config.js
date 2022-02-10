@@ -17,11 +17,12 @@ const Config = (props) => {
   const config = useSelector((state) => {
     return state.config;
   });
-  // TODO: remove
+  /*
   const testClickHandler = (event) => {
     Log.log(`Config.tCH`);
     dispatch(configActions.playerWinsGame({ name: "Mozart" }));
   };
+  */
   const newPlayerHandler = (event) => {
     history.push("/config/player/new");
   };

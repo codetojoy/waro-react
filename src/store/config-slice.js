@@ -49,6 +49,14 @@ export const configSlice = createSlice({
       const player = findPlayerByName(name, state.players);
       player.name = newName;
     },
+    newPlayer(state, action) {
+      const obj = action.payload;
+      const name = obj.name;
+      const strategy = obj.strategy;
+      const player = { name: name, strategy: strategy, numGamesWon: 0, cards: [], numPointsForRound: 0 };
+      state.players.push(player);
+      state.numCards = (state.players.length + 1) * C.DEFAULT_CARDS_PER_PLAYER;
+    },
   },
 });
 

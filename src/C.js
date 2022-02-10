@@ -10,3 +10,5 @@ export const PLAYER_2 = "Mozart";
 export const PLAYER_USERNAME = "You";
 
 export const ROUTE_CONFIG = "/config";
+
+export const DEFAULT_CARDS_PER_PLAYER = 5;

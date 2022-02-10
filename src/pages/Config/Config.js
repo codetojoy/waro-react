@@ -3,6 +3,9 @@ import { NavLink, useHistory } from "react-router-dom";
 
 import { configActions } from "../../store/config-slice";
 
+import * as C from "../../C";
+import * as Log from "../../Log";
+
 import classes from "./Config.module.css";
 
 const Config = (props) => {
@@ -12,18 +15,22 @@ const Config = (props) => {
     return state.config;
   });
   const testClickHandler = (event) => {
-    console.log(`TRACER Config.clickHandler`);
+    Log.log(`Config.tCH`);
     dispatch(configActions.playerWinsGame({ name: "Mozart" }));
   };
   const newPlayerHandler = (event) => {
-    console.log(`TRACER Config.newPlayerHandler`);
     history.push("/config/player/new");
   };
-  const players = config.players.map((p) => (
-    <li key={p.name}>
-      {p.name} ({p.strategy}) <NavLink to={`/config/player/${p.name}`}>edit</NavLink>
-    </li>
-  ));
+  const players = config.players.map((p) => {
+    const isUser = p.name === C.PLAYER_USERNAME;
+    const editLink = isUser ? "" : <NavLink to={`/config/player/${p.name}`}>edit</NavLink>;
+
+    return (
+      <li key={p.name}>
+        {p.name} ({p.strategy}) {editLink}
+      </li>
+    );
+  });
   return (
     <div className={classes.config}>
       <ul className={classes.playerList}>{players}</ul>

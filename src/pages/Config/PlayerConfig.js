@@ -18,7 +18,6 @@ const PlayerConfig = (props) => {
     return state.config;
   });
   const player = config.players.find((p) => p.name === playerName);
-  // const [name] = useState(player.name);
   const nameRef = useRef(player.name);
   const options = config.visibleStrategies.map((s) => {
     return (

@@ -13,3 +13,8 @@ code {
 a {
   text-decoration: none;
 }
+
+.error {
+  color: red;
+  font-weight: bold;
+}

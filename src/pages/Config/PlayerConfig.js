@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -9,6 +9,9 @@ import * as C from "../../C";
 import classes from "./PlayerConfig.module.css";
 
 const PlayerConfig = (props) => {
+  const [errorName, setErrorName] = useState(false);
+  const [errorStrategy, setErrorStrategy] = useState(false);
+  const [nameTouched, setNameTouched] = useState(false);
   const history = useHistory();
   const strategyRef = useRef();
   const params = useParams();
@@ -27,17 +30,42 @@ const PlayerConfig = (props) => {
     );
   });
 
+  const validateName = (newName) => {
+    const found = config.players.find((p) => p.name === newName);
+    const result = !found;
+    return result;
+  };
+  const validateStrategy = (strategy) => {
+    const found = config.visibleStrategies.find((s) => s === strategy);
+    return found;
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    const newName = nameRef.current.value;
-    // TODO: validate
-    dispatch(configActions.setPlayerName({ name: player.name, newName: newName }));
-    history.push(C.ROUTE_CONFIG);
+    if (nameTouched) {
+      const newName = nameRef.current.value;
+      const ok = validateName(newName);
+      if (ok) {
+        dispatch(configActions.setPlayerName({ name: player.name, newName: newName }));
+        history.push(C.ROUTE_CONFIG);
+      }
+      setErrorName(!ok);
+    } else {
+      history.push(C.ROUTE_CONFIG);
+    }
+  };
+  const nameHandler = () => {
+    setNameTouched(true);
   };
   const selectHandler = () => {
     const strategy = strategyRef.current.value;
-    // TODO: validate
-    dispatch(configActions.setPlayerStrategy({ name: player.name, strategy: strategy }));
+    const ok = validateStrategy(strategy);
+    if (ok) {
+      dispatch(configActions.setPlayerStrategy({ name: player.name, strategy: strategy }));
+      setErrorStrategy(false);
+    } else {
+      setErrorStrategy(true);
+    }
   };
 
   const backHandler = (event) => {
@@ -51,7 +79,13 @@ const PlayerConfig = (props) => {
       <form onSubmit={submitHandler}>
         <fieldset>
           <legend>Name</legend>
-          <input data-testid="playerName" type="text" ref={nameRef} defaultValue={player.name}></input>
+          <input
+            data-testid="playerName"
+            type="text"
+            ref={nameRef}
+            defaultValue={player.name}
+            onChange={nameHandler}
+          ></input>
         </fieldset>
         <fieldset>
           <legend>Strategy</legend>
@@ -73,6 +107,8 @@ const PlayerConfig = (props) => {
       <button data-testid="backButton" type="button" onClick={backHandler}>
         Back
       </button>
+      {errorName && <p className="error">name must be unique</p>}
+      {errorStrategy && <p className="error">illegal strategy</p>}
     </div>
   );
 };

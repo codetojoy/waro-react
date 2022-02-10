@@ -4,9 +4,30 @@ import * as C from "../C";
 
 export const initConfigState = {
   players: [
-    { name: C.PLAYER_1, strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
-    { name: C.PLAYER_2, strategy: C.STRATEGY_NEXT_CARD, numGamesWon: 0, cards: [], numPointsForRound: 0 },
-    { name: C.PLAYER_USERNAME, strategy: C.STRATEGY_UI, numGamesWon: 0, cards: [], numPointsForRound: 0 },
+    {
+      name: C.PLAYER_1,
+      strategy: C.STRATEGY_NEXT_CARD,
+      numGamesWon: 0,
+      cards: [],
+      numPointsForRound: 0,
+      currentBid: 0,
+    },
+    {
+      name: C.PLAYER_2,
+      strategy: C.STRATEGY_NEXT_CARD,
+      numGamesWon: 0,
+      cards: [],
+      numPointsForRound: 0,
+      currentBid: 0,
+    },
+    {
+      name: C.PLAYER_USERNAME,
+      strategy: C.STRATEGY_UI,
+      numGamesWon: 0,
+      cards: [],
+      numPointsForRound: 0,
+      currentBid: 0,
+    },
   ],
   numCards: 32,
   visibleStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD],
@@ -53,7 +74,7 @@ export const configSlice = createSlice({
       const obj = action.payload;
       const name = obj.name;
       const strategy = obj.strategy;
-      const player = { name: name, strategy: strategy, numGamesWon: 0, cards: [], numPointsForRound: 0 };
+      const player = { name: name, strategy: strategy, numGamesWon: 0, cards: [], numPointsForRound: 0, currentBid: 0 };
       state.players.push(player);
       state.numCards = (state.players.length + 1) * C.DEFAULT_CARDS_PER_PLAYER;
     },

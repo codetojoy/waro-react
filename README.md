@@ -16,9 +16,9 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
-* new player
 * new game: deal cards to players
 * store config in firebase
+* X: new player
 * X: config: num cards with validation
 * X: do not edit user config
 * X: validate player config

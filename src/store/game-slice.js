@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initGameState = { players: [], roundNum: 0, kitty: { cards: [] }, cardOnOffer: -1 };
+import * as C from "../C";
+
+export const initGameState = { stage: C.GAME_STAGE_NEW, players: [], roundNum: 0, kitty: { cards: [] } };
 
 export const gameSlice = createSlice({
   name: "game",
@@ -8,6 +10,11 @@ export const gameSlice = createSlice({
   reducers: {
     noOp(state, action) {
       console.log(`TRACER game reducer no-op`);
+    },
+    newGame(state, action) {
+      // const obj = state.payload;
+      // const config = obj.config;
+      state.stage = C.GAME_STAGE_IN_PROGRESS;
     },
   },
 });

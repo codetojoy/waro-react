@@ -11,6 +11,7 @@ jest.mock("react-router-dom", () => ({
     playerName: "Mozart",
   }),
   useRouteMatch: () => ({ url: `/config/player/Mozart` }),
+  // useHistory: () => ({ push: (path) => {} }),
 }));
 
 describe("PlayerConfig component", () => {
@@ -43,5 +44,34 @@ describe("PlayerConfig component", () => {
 
     const element = screen.getByText(/min card/i);
     expect(element).toBeInTheDocument();
+  });
+  test("should handle changing player name", async () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <PlayerConfig />
+        </BrowserRouter>
+      </Provider>
+    );
+
+    fireEvent.change(screen.getByTestId("playerName"), {
+      target: { value: "Van Halen" },
+    });
+
+    // TODO:
+    // not sure how to test with changing the route in the prod code
+    /*
+    // test
+    fireEvent(
+      screen.getByTestId("saveButton"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    const element = screen.getByText(/Van Halen/i);
+     expect(element).toBeInTheDocument();
+    */
   });
 });

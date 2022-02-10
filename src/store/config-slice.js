@@ -42,6 +42,13 @@ export const configSlice = createSlice({
       const player = findPlayerByName(name, state.players);
       player.strategy = strategy;
     },
+    setPlayerName(state, action) {
+      const obj = action.payload;
+      const name = obj.name;
+      const newName = obj.newName;
+      const player = findPlayerByName(name, state.players);
+      player.name = newName;
+    },
   },
 });
 

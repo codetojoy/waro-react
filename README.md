@@ -16,6 +16,10 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* config: num cards
+* do not edit user config
+* validate player config
+* new player
 * store config in firebase
 * X: scaffold routes
 * X: basic redux

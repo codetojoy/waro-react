@@ -8,3 +8,5 @@ export const STRATEGY_UI = "Interactive";
 export const PLAYER_1 = "Chopin";
 export const PLAYER_2 = "Mozart";
 export const PLAYER_USERNAME = "You";
+
+export const ROUTE_CONFIG = "/config";

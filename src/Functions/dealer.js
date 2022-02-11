@@ -16,3 +16,14 @@ export const shuffle = (cards) => {
   }
   return newCards;
 };
+
+export const dealHands = (cards, numCardsInHand) => {
+  const hands = [];
+
+  for (let i = 0, j = cards.length; i < j; i += numCardsInHand) {
+    let hand = cards.slice(i, i + numCardsInHand);
+    hands.push(hand);
+  }
+
+  return hands;
+};

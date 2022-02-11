@@ -16,21 +16,22 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
-  Log.logObj("game", game);
+  Log.logObj("game:: state", game);
   const isNewGame = game.stage === C.GAME_STAGE_NEW;
   const dealHandler = () => {
     dispatch(gameActions.newGame({ config: config }));
   };
-  return (
-    <div>
-      {isNewGame && (
-        <button type="button" onClick={dealHandler}>
-          Deal
-        </button>
-      )}
-      {!isNewGame && <Players />}
-    </div>
-  );
+  let content = <p>placeholder</p>;
+  if (isNewGame) {
+    content = (
+      <button type="button" onClick={dealHandler}>
+        Deal
+      </button>
+    );
+  } else {
+    content = <Players game={game} />;
+  }
+  return <div>{content}</div>;
 };
 
 export default Game;

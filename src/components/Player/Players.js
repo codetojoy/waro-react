@@ -1,10 +1,11 @@
+import Player from "./Player";
 
 const Players = (props) => {
-    return (
-        <div>
-            <p>Players</p>
-        </div>
-    );
-}
+  return (
+    <div>
+      <Player name="Kitty" cards={props.game.kitty.cards} />
+    </div>
+  );
+};
 
 export default Players;

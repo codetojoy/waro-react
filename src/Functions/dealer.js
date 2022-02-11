@@ -17,6 +17,14 @@ export const shuffle = (cards) => {
   return newCards;
 };
 
+// TODO: ugh, better name
+export const getPartitionedHands = (numCards, numPlayers) => {
+  const cards = shuffle(newDeck(numCards));
+  const numCardsInHand = numCards / (numPlayers + 1);
+  const hands = dealHands(cards, numCardsInHand);
+  return hands;
+};
+
 export const dealHands = (cards, numCardsInHand) => {
   const hands = [];
 

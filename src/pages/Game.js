@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import * as C from "../C";
+import * as Log from "../Log";
 import Players from "../components/Player/Players";
 
-// import { configActions } from "../store/config-slice";
 import { gameActions } from "../store/game-slice";
-
-// import { deal } from "../Functions/dealer";
 
 const Game = (props) => {
   const dispatch = useDispatch();
@@ -18,9 +16,9 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
+  Log.logObj("game", game);
   const isNewGame = game.stage === C.GAME_STAGE_NEW;
   const dealHandler = () => {
-    // const newGame = deal(config, game);
     dispatch(gameActions.newGame({ config: config }));
   };
   return (

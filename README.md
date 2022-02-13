@@ -16,6 +16,8 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* use buttons
+* render hand / player properly 
 * play round
 * store config in firebase
 * X: new game: deal cards to players

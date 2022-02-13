@@ -8,6 +8,9 @@ import Players from "../components/Player/Players";
 
 import { gameActions } from "../store/game-slice";
 
+import Button from "../components/UI/Button";
+import Status from "../components/UI/Status";
+
 const Game = (props) => {
   const dispatch = useDispatch();
   const config = useSelector((state) => {
@@ -23,13 +26,14 @@ const Game = (props) => {
   };
   let content = <p>placeholder</p>;
   if (isNewGame) {
-    content = (
-      <button type="button" onClick={dealHandler}>
-        Deal
-      </button>
-    );
+    content = <Button onClick={dealHandler}>Deal</Button>;
   } else {
-    content = <Players game={game} />;
+    content = (
+      <div>
+        <Status status={game.status} />
+        <Players game={game} />
+      </div>
+    );
   }
   return <div>{content}</div>;
 };

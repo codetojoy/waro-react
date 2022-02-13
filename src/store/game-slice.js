@@ -5,7 +5,13 @@ import * as Log from "../Log";
 
 import { getPartitionedHands } from "../Functions/dealer";
 
-export const initGameState = { stage: C.GAME_STAGE_NEW, players: [], roundNum: 0, kitty: { cards: [] } };
+export const initGameState = {
+  status: "new game",
+  stage: C.GAME_STAGE_NEW,
+  players: [],
+  roundNum: 0,
+  kitty: { cards: [] },
+};
 
 const buildPlayers = (config) => {
   const players = config.players.map((playerConfig) => {
@@ -38,6 +44,7 @@ export const gameSlice = createSlice({
         }
       }
       state.stage = C.GAME_STAGE_IN_PROGRESS;
+      state.status = "Your turn";
     },
   },
 });

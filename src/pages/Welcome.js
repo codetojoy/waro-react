@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 
 import * as C from "../C";
+import Button from "../components/UI/Button";
 
 const Welcome = (props) => {
   const history = useHistory();
@@ -9,9 +10,7 @@ const Welcome = (props) => {
   };
   return (
     <div>
-      <button type="button" onClick={clickHandler}>
-        New Game
-      </button>
+      <Button onClick={clickHandler}>New Game</Button>
     </div>
   );
 };

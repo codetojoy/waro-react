@@ -6,9 +6,9 @@ const Kitty = (props) => {
   return (
     <div>
       <p>Prize Card</p>
-      <Card value={prizeCard} doShow={true} />
+      <Card value={prizeCard} doShow={true} className="buttonAmber" />
       <p>Kitty</p>
-      <Hand cards={kittyCards} isTransparent={props.isTransparent} />
+      <Hand cards={kittyCards} isTransparent={props.isTransparent} className="buttonAmber" />
     </div>
   );
 };

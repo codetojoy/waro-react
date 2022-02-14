@@ -5,6 +5,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import * as C from "../C";
 import * as Log from "../Log";
 import Players from "../components/Player/Players";
+import Kitty from "../components/Player/Kitty";
 
 import { gameActions } from "../store/game-slice";
 
@@ -20,6 +21,7 @@ const Game = (props) => {
     return state.game;
   });
   Log.logObj("game:: state", game);
+  const isTransparent = config.isTransparent;
   const isNewGame = game.stage === C.GAME_STAGE_NEW;
   const dealHandler = () => {
     dispatch(gameActions.newGame({ config: config }));
@@ -31,7 +33,8 @@ const Game = (props) => {
     content = (
       <div>
         <Status status={game.status} />
-        <Players game={game} />
+        <Kitty cards={game.kitty.cards} isTransparent={isTransparent} />
+        <Players players={game.players} isTransparent={isTransparent} />
       </div>
     );
   }

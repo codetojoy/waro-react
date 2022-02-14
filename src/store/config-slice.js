@@ -32,6 +32,7 @@ export const initConfigState = {
   numCards: 32,
   visibleStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD],
   allStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD, C.STRATEGY_UI],
+  isTransparent: true,
 };
 
 const findPlayerByName = (name, players) => {

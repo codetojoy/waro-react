@@ -1,10 +1,10 @@
+import Button from "../UI/Button";
 
 const Card = (props) => {
-    return (
-        <div>
-            <p>Card</p>
-        </div>
-    );
-}
+  const isTransparent = props.isTransparent;
+  const value = props.isUser || isTransparent ? props.value : "X";
+
+  return <Button disabled={!props.isUser}>{value}</Button>;
+};
 
 export default Card;

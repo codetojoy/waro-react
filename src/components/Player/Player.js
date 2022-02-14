@@ -1,10 +1,10 @@
+import Hand from "../Hand/Hand";
+
 const Player = (props) => {
-  const tmpCards = `${props.cards}`;
   return (
     <div>
-      <p>
-        name: {props.name} cards: {tmpCards}
-      </p>
+      <p>{props.name}</p>
+      <Hand cards={props.cards} isUser={props.isUser} />
     </div>
   );
 };

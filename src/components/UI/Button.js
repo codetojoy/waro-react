@@ -14,6 +14,7 @@ const Button = (props) => {
     <button
       className={classes[classKey]}
       type={props.type || "button"}
+      data-testid={props.dataTestId || ""}
       onClick={clickHandler}
       disabled={props.disabled}
     >

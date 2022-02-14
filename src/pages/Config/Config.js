@@ -7,11 +7,14 @@ import { configActions } from "../../store/config-slice";
 import * as C from "../../C";
 import * as Log from "../../Log";
 
+import Button from "../../components/UI/Button";
+
 import classes from "./Config.module.css";
 
 const Config = (props) => {
   const [errorNumCards, setErrorNumCards] = useState(false);
   const numCardsRef = useRef();
+  const isTransparentRef = useRef();
   const history = useHistory();
   const dispatch = useDispatch();
   const config = useSelector((state) => {
@@ -39,6 +42,7 @@ const Config = (props) => {
   const numCardsStep = config.players.length + 1;
 
   const validateNumCards = (newNumCards) => {
+    console.log(`TRACER Config val ${newNumCards} ${numCardsStep}`);
     return newNumCards > 0 && newNumCards % numCardsStep === 0;
   };
 
@@ -47,8 +51,9 @@ const Config = (props) => {
     const newNumCards = numCardsRef.current.value;
     const ok = validateNumCards(newNumCards);
     setErrorNumCards(!ok);
+    const isTransparent = isTransparentRef.current.checked;
     if (ok) {
-      dispatch(configActions.setNumCards({ numCards: newNumCards }));
+      dispatch(configActions.updateTopLevel({ isTransparent: isTransparent, numCards: newNumCards }));
     }
     Log.log(`C.submitHandler ${newNumCards} ${ok}`);
   };
@@ -56,7 +61,7 @@ const Config = (props) => {
   return (
     <div className={classes.config}>
       <ul className={classes.playerList}>{players}</ul>
-      <button onClick={newPlayerHandler}>new player</button>
+      <Button onClick={newPlayerHandler}>new player</Button>
       <form onSubmit={submitHandler}>
         <fieldset>
           <legend>Num Cards</legend>
@@ -69,9 +74,18 @@ const Config = (props) => {
             min={numCardsStep}
           ></input>
         </fieldset>
-        <button data-testid="saveButton" type="submit">
+        <fieldset>
+          <legend>Transparency</legend>
+          <input
+            data-testid="transparency"
+            defaultChecked={config.isTransparent}
+            ref={isTransparentRef}
+            type="checkbox"
+          ></input>
+        </fieldset>
+        <Button dataTestId="saveButton" type="submit">
           Save
-        </button>
+        </Button>
       </form>
       {errorNumCards && <p className="error">illegal num cards</p>}
     </div>

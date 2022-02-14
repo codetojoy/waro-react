@@ -47,9 +47,11 @@ export const configSlice = createSlice({
       console.log(`TRACER game reducer no-op. state:`);
       console.log(state);
     },
-    setNumCards(state, action) {
+    updateTopLevel(state, action) {
       const obj = action.payload;
+      console.log(`TRACER config reducer cp ijk ${obj.numCards} ${obj.isTransparent}`);
       state.numCards = obj.numCards;
+      state.isTransparent = obj.isTransparent;
     },
     playerWinsGame(state, action) {
       const obj = action.payload;

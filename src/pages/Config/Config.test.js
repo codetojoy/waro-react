@@ -44,4 +44,30 @@ describe("Config component", () => {
     const element = screen.getByTestId("numCards");
     expect(element.value).toEqual("60");
   });
+
+  test("should handle changing transparency", async () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Config />
+        </BrowserRouter>
+      </Provider>
+    );
+
+    fireEvent.change(screen.getByTestId("transparency"), {
+      target: { checked: false },
+    });
+
+    // test
+    fireEvent(
+      screen.getByTestId("saveButton"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    const element = screen.getByTestId("transparency");
+    expect(element.checked).toEqual(false);
+  });
 });

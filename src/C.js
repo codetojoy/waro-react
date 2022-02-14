@@ -17,3 +17,7 @@ export const DEFAULT_CARDS_PER_PLAYER = 5;
 export const GAME_STAGE_NEW = "new";
 export const GAME_STAGE_IN_PROGRESS = "in_progress";
 export const GAME_STAGE_COMPLETE = "complete";
+
+export const CSS_AMBER_BUTTON = "buttonAmber";
+export const CSS_GREEN_BUTTON = "buttonGreen";
+export const CSS_DEFAULT_BUTTON = "buttonDefault";

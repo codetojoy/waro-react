@@ -16,11 +16,12 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
-* copy button colours from https://codetojoy.github.io/bids_ng1/
 * render hands/kitty with CSS flexbox 
 * play one round
 * remote strategy
 * store config in firebase
+* X: set transparency in config 
+* X: copy button colours from https://codetojoy.github.io/bids_ng1/
 * X: use buttons
 * X: new game: deal cards to players
 * X: new player

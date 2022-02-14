@@ -4,7 +4,7 @@ const Player = (props) => {
   return (
     <div>
       <p>{props.name}</p>
-      <Hand cards={props.cards} isUser={props.isUser} />
+      <Hand cards={props.cards} isUser={props.isUser} isTransparent={props.isTransparent} />
     </div>
   );
 };

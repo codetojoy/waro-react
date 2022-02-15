@@ -11,7 +11,7 @@ const Kitty = (props) => {
     <div className={classes.kitty}>
       <div className={classes.kittyPrize}>
         <p>Prize Card</p>
-        <Card value={prizeCard} doShow={true} isTransparent={props.isTransparent} className={C.CSS_AMBER_BUTTON} />
+        <Card value={prizeCard} doShow={true} isTransparent={true} className={C.CSS_AMBER_BUTTON} />
       </div>
       <div className={classes.kittyCards}>
         <p>Kitty</p>

@@ -12,6 +12,8 @@ import { gameActions } from "../store/game-slice";
 import Button from "../components/UI/Button";
 import Status from "../components/UI/Status";
 
+import classes from "./Game.module.css";
+
 const Game = (props) => {
   const dispatch = useDispatch();
   const config = useSelector((state) => {
@@ -31,10 +33,16 @@ const Game = (props) => {
     content = <Button onClick={dealHandler}>Deal</Button>;
   } else {
     content = (
-      <div>
-        <Status status={game.status} />
-        <Kitty cards={game.kitty.cards} isTransparent={isTransparent} />
-        <Players players={game.players} isTransparent={isTransparent} />
+      <div className={classes.game}>
+        <div>
+          <Kitty cards={game.kitty.cards} isTransparent={isTransparent} />
+        </div>
+        <div>
+          <Players players={game.players} isTransparent={isTransparent} />
+        </div>
+        <div>
+          <Status status={game.status} />
+        </div>
       </div>
     );
   }

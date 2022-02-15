@@ -11,8 +11,11 @@ export const getBids = (players, prizeCard) => {
 
 export const getBid = (player, prizeCard) => {
   const strategy = getStrategy(player.strategy);
+  if (typeof strategy !== "function") {
+    throw new Error("internal error on strategy");
+  }
   const bidValue = strategy(player.cards, prizeCard);
-  const newCards = player.cards.find((c) => c !== bidValue);
+  const newCards = player.cards.filter((c) => c !== bidValue);
   const name = player.name;
   return { name, bidValue, newCards };
 };

@@ -60,3 +60,7 @@ npm install react-router-dom@5
 npm install "@reduxjs/toolkit"
 ```
 
+### useful references
+
+* [1] - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+

@@ -6,6 +6,7 @@ import * as Log from "../Log";
 import { getPartitionedHands } from "../Functions/dealer";
 
 import * as Strategy from "../Functions/strategies";
+import * as Round from "../Functions/round";
 
 export const initGameState = {
   status: "new game",
@@ -22,11 +23,11 @@ const buildPlayers = (config) => {
   return players;
 };
 
-const findUser = (allPlayers) => {
+const findPlayer = (allPlayers, targetPlayerName) => {
   let user = null;
   let players = [];
   allPlayers.forEach((player) => {
-    if (player.isUser) {
+    if (player.name === targetPlayerName) {
       user = player;
     } else {
       players.push(player);
@@ -45,19 +46,30 @@ export const gameSlice = createSlice({
     playRound(state, action) {
       const obj = action.payload;
       const userBid = obj.userBid;
-      const winner = "mozart";
-      const prize = 5150;
-      const [user, computerPlayers] = findUser(state.players);
+      const [user, computerPlayers] = findPlayer(state.players, C.PLAYER_USERNAME);
+      /*
       computerPlayers.forEach((cp) => {
         Log.logObj(`game-slice cp`, current(cp));
       });
       Log.logObj(`game-slice user`, current(user));
-      const prizeCard = state.kitty[0];
-      const bids = Strategy.getBids(computerPlayers, prizeCard);
+      */
+      const prizeCard = state.kitty.cards[0];
+      state.kitty.cards = state.kitty.cards.slice(1);
+      const computerBids = Strategy.getBids(computerPlayers, prizeCard);
+      const bids = [...computerBids, { name: user.name, bidValue: userBid }];
+      const winnerName = Round.findWinner(bids);
+      const tmpPlayers1 = Round.applyBids(state.players, bids);
+      const tmpPlayers2 = Round.applyRound(tmpPlayers1, winnerName, prizeCard);
+      state.players = tmpPlayers2;
+
+      /*
+      const [winner, losers] = findPlayer(state.players, winnerName);
+      Round.winsRound(winner);
+      losers.forEachRound.losesRound(losers);
       Log.logObj(`game-slice bids`, bids);
       user.cards = user.cards.filter((c) => c !== userBid);
-      state.kitty.cards = state.kitty.cards.slice(1);
-      state.status = `${winner} wins round for ${prize} points`;
+      */
+      state.status = `${winnerName} wins round for ${prizeCard} points`;
     },
     newGame(state, action) {
       const obj = action.payload;

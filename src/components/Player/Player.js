@@ -1,11 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
+
 import Hand from "../Hand/Hand";
 
 import classes from "./Player.module.css";
 
+import { gameActions } from "../../store/game-slice";
+
 const Player = (props) => {
+  const dispatch = useDispatch();
   const clickHandler = (value) => {
     if (props.isUser) {
-      console.log(`TRACER Player click: ${value}`);
+      console.log(`TRACER Player plays: ${value}`);
+      dispatch(gameActions.playRound({ userBid: value }));
     }
   };
   return (

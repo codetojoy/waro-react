@@ -11,6 +11,7 @@ export const initConfigState = {
       cards: [],
       numPointsForRound: 0,
       currentBid: 0,
+      isUser: false,
     },
     {
       name: C.PLAYER_2,
@@ -19,6 +20,7 @@ export const initConfigState = {
       cards: [],
       numPointsForRound: 0,
       currentBid: 0,
+      isUser: false,
     },
     {
       name: C.PLAYER_USERNAME,
@@ -27,6 +29,7 @@ export const initConfigState = {
       cards: [],
       numPointsForRound: 0,
       currentBid: 0,
+      isUser: true,
     },
   ],
   numCards: 32,
@@ -77,7 +80,15 @@ export const configSlice = createSlice({
       const obj = action.payload;
       const name = obj.name;
       const strategy = obj.strategy;
-      const player = { name: name, strategy: strategy, numGamesWon: 0, cards: [], numPointsForRound: 0, currentBid: 0 };
+      const player = {
+        name: name,
+        strategy: strategy,
+        numGamesWon: 0,
+        cards: [],
+        numPointsForRound: 0,
+        currentBid: 0,
+        isUser: false,
+      };
       state.players.push(player);
       state.numCards = (state.players.length + 1) * C.DEFAULT_CARDS_PER_PLAYER;
     },

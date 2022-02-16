@@ -1,7 +1,6 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 import * as C from "../C";
-import * as Log from "../Log";
 
 import { getPartitionedHands } from "../Functions/dealer";
 
@@ -14,6 +13,7 @@ export const initGameState = {
   players: [],
   roundNum: 0,
   kitty: { cards: [] },
+  gameWinnerName: "",
 };
 
 const buildPlayers = (config) => {
@@ -58,9 +58,7 @@ export const gameSlice = createSlice({
 
       if (state.kitty.cards.length === 0) {
         const gameWinnerName = Round.findGameWinner(state.players);
-        // this needs to dispatch to the config-slice
-        // const tmpPlayers3 = Round.applyLastRound(state.players, gameWinnerName);
-        // state.players = tmpPlayers3;
+        state.gameWinnerName = gameWinnerName;
         state.status = `${gameWinnerName} wins game!`;
         state.stage = C.GAME_STAGE_COMPLETE;
       } else {
@@ -85,6 +83,7 @@ export const gameSlice = createSlice({
       }
       state.stage = C.GAME_STAGE_IN_PROGRESS;
       state.status = "Your turn";
+      state.gameWinnerName = "";
     },
   },
 });

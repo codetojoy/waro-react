@@ -1,12 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+// import { NavLink, useHistory } from "react-router-dom";
 
 import * as C from "../C";
 import * as Log from "../Log";
 import Players from "../components/Player/Players";
 import Kitty from "../components/Player/Kitty";
 
+import { configActions } from "../store/config-slice";
 import { gameActions } from "../store/game-slice";
 
 import Button from "../components/UI/Button";
@@ -22,6 +23,13 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
+  useEffect(() => {
+    const isGameOver = game.stage === C.GAME_STAGE_COMPLETE;
+    Log.log(`Game game over effect: ${isGameOver}`);
+    if (isGameOver) {
+      dispatch(configActions.playerWinsGame({ name: game.gameWinnerName }));
+    }
+  }, [game, dispatch]);
   Log.logObj("game:: state", game);
   const isTransparent = config.isTransparent;
   const isNewGame = game.stage === C.GAME_STAGE_NEW;

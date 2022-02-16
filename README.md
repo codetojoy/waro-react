@@ -17,7 +17,8 @@ Todo:
 ---------
 
 * review CSS
-* handle end-of-game
+    - center main boxes for New Game / Deal 
+* handle end-of-game: update config-slice
 * remote strategy
 * store config in firebase
 * X: render hands/kitty with CSS flexbox 

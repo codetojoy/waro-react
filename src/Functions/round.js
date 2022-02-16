@@ -18,7 +18,17 @@ export const applyRound = (players, winnerName, prizeCard) => {
   return newPlayers;
 };
 
-export const findWinner = (bids) => {
+/*
+export const applyLastRound = (players, gameWinnerName) => {
+  const newPlayers = players.map((p) => {
+    const newPlayer = p.name === gameWinnerName ? winsGame(p) : p;
+    return newPlayer;
+  });
+  return newPlayers;
+};
+*/
+
+export const findRoundWinner = (bids) => {
   let winner = null;
   let topBid = -1;
   bids.forEach((bid) => {
@@ -31,8 +41,29 @@ export const findWinner = (bids) => {
   return winner;
 };
 
+export const findGameWinner = (players) => {
+  let winner = null;
+  let topScore = -1;
+  players.forEach((player) => {
+    const score = player.numPointsForRound;
+    if (score > topScore) {
+      winner = player.name;
+      topScore = score;
+    }
+  });
+  return winner;
+};
+
 export const winsRound = (player, prizeCard) => {
   const numPointsForRound = player.numPointsForRound + prizeCard;
   const newPlayer = { ...player, numPointsForRound };
   return newPlayer;
 };
+
+/*
+export const winsGame = (player) => {
+  const numPointsForRound = player.numPointsForRound + prizeCard;
+  const newPlayer = { ...player, numPointsForRound };
+  return newPlayer;
+};
+*/

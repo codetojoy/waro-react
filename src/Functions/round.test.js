@@ -44,10 +44,21 @@ describe("round service", () => {
     expect(newPlayer.numPointsForRound).toEqual(prizeCard);
   });
 
-  test("should find winner in bids", () => {
+  test("should find round winner in bids", () => {
     // test
-    const winner = R.findWinner([bid1, bid2, bid3]);
+    const winner = R.findRoundWinner([bid1, bid2, bid3]);
 
     expect(winner).toEqual(bid3.name);
+  });
+
+  test("should find game winner in players", () => {
+    p1.numPointsForRound = 22;
+    p2.numPointsForRound = 33;
+    p3.numPointsForRound = 11;
+
+    // test
+    const winner = R.findGameWinner([p1, p2, p3]);
+
+    expect(winner).toEqual(p2.name);
   });
 });

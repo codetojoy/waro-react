@@ -47,29 +47,25 @@ export const gameSlice = createSlice({
       const obj = action.payload;
       const userBid = obj.userBid;
       const [user, computerPlayers] = findPlayer(state.players, C.PLAYER_USERNAME);
-      /*
-      computerPlayers.forEach((cp) => {
-        Log.logObj(`game-slice cp`, current(cp));
-      });
-      Log.logObj(`game-slice user`, current(user));
-      */
       const prizeCard = state.kitty.cards[0];
       state.kitty.cards = state.kitty.cards.slice(1);
       const computerBids = Strategy.getBids(computerPlayers, prizeCard);
       const bids = [...computerBids, { name: user.name, bidValue: userBid }];
-      const winnerName = Round.findWinner(bids);
+      const roundWinnerName = Round.findRoundWinner(bids);
       const tmpPlayers1 = Round.applyBids(state.players, bids);
-      const tmpPlayers2 = Round.applyRound(tmpPlayers1, winnerName, prizeCard);
+      const tmpPlayers2 = Round.applyRound(tmpPlayers1, roundWinnerName, prizeCard);
       state.players = tmpPlayers2;
 
-      /*
-      const [winner, losers] = findPlayer(state.players, winnerName);
-      Round.winsRound(winner);
-      losers.forEachRound.losesRound(losers);
-      Log.logObj(`game-slice bids`, bids);
-      user.cards = user.cards.filter((c) => c !== userBid);
-      */
-      state.status = `${winnerName} wins round for ${prizeCard} points`;
+      if (state.kitty.cards.length === 0) {
+        const gameWinnerName = Round.findGameWinner(state.players);
+        // this needs to dispatch to the config-slice
+        // const tmpPlayers3 = Round.applyLastRound(state.players, gameWinnerName);
+        // state.players = tmpPlayers3;
+        state.status = `${gameWinnerName} wins game!`;
+        state.stage = C.GAME_STAGE_COMPLETE;
+      } else {
+        state.status = `${roundWinnerName} wins round for ${prizeCard} points`;
+      }
     },
     newGame(state, action) {
       const obj = action.payload;

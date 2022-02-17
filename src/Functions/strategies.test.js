@@ -66,27 +66,35 @@ describe("strategy service", () => {
 
     expect(result).toEqual(55);
   });
+*/
   test("provide basic next-card strategy", async () => {
     // test
-    const promise = S.nextCard(p1.name, p1.cards, prizeCard);
-    let name,
-      bid,
-      cards = null;
+    const promise = S.nextCard(p1.cards, prizeCard);
+    let result = null;
     await Promise.all([promise]).then((values) => {
-      console.log(`TRACER strategies test cp inner:`);
-      const json = values[0];
-      console.log(json);
-      if (json.bid) {
-        name = json.name;
-        bid = json.bid;
-        cards = json.cards;
-      }
+      values.forEach((value) => {
+        result = value;
+      });
     });
-    console.log(`TRACER strategies test cp main`);
 
-    expect(name).toEqual(p1.name);
-    expect(bid).toEqual(18);
-    expect(cards).toEqual(p1.cards);
+    expect(result).toEqual(18);
   });
-*/
+
+  // integration test: requires server to be running
+  test("provide basic remote strategy", async () => {
+    let result = 55;
+    const enabled = false;
+
+    if (enabled) {
+      // test
+      const promise = S.remoteCard(cards, prizeCard);
+      await Promise.all([promise]).then((values) => {
+        values.forEach((value) => {
+          result = value;
+        });
+      });
+    }
+
+    expect(result).toEqual(55);
+  });
 });

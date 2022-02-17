@@ -16,6 +16,7 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* max card is hardcoded in remote 
 * end of game status bar isn't right 
 * review CSS
     - center main boxes for New Game / Deal 

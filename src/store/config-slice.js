@@ -15,7 +15,7 @@ export const initConfigState = {
     },
     {
       name: C.PLAYER_2,
-      strategy: C.STRATEGY_NEXT_CARD,
+      strategy: C.STRATEGY_REMOTE,
       numGamesWon: 0,
       cards: [],
       numPointsForRound: 0,

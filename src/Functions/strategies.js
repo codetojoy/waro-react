@@ -43,7 +43,7 @@ export const getStrategy = (strategyName) => {
   if (strategyName === C.STRATEGY_NEXT_CARD) {
     return nextCard;
   } else if (strategyName === C.STRATEGY_REMOTE) {
-    return nextCard; // remoteCard;
+    return remoteCard;
   }
 };
 
@@ -60,7 +60,6 @@ export const nextCard = (cards, prizeCard) => {
   return promise;
 };
 
-/*
 export const remoteCard = async (cards, prizeCard) => {
   // TODO: extract these magic values
   // "http://localhost:8080/waro/strategy?prize_card=10&max_card=12&mode=max&cards=4&cards=6&cards=2&delay_in_seconds=5" | jq
@@ -70,7 +69,7 @@ export const remoteCard = async (cards, prizeCard) => {
     prize_card: prizeCard,
     mode: "max",
     max_card: 32,
-    delay_in_seconds: 5,
+    delay_in_seconds: 3,
   };
   const urlSearchParams = new URLSearchParams(params);
   cards.forEach((card) => {
@@ -79,6 +78,15 @@ export const remoteCard = async (cards, prizeCard) => {
   const uri = new URL(`${server}/${context}`);
   uri.search = urlSearchParams.toString();
 
+  return fetch(uri).then((response) => {
+    if (response.ok) {
+      return response.json().then((json) => {
+        console.log(`TRACER remoteCard m: ${json.message}`);
+        return json.card;
+      });
+    }
+  });
+  /*
   const response = await fetch(uri);
 
   if (response.ok) {
@@ -88,5 +96,5 @@ export const remoteCard = async (cards, prizeCard) => {
   } else {
     console.log(`TRACER INTERNAL ERROR on fetch card`);
   }
+  */
 };
-*/

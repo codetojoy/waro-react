@@ -28,10 +28,8 @@ export const playRound = ({ userBid }) => {
     const stage = isGameOver ? C.GAME_STAGE_COMPLETE : C.GAME_STAGE_IN_PROGRESS;
 
     if (isGameOver) {
-      // gameWinnerName = Round.findGameWinner(game.players);
-      // state.gameWinnerName = gameWinnerName;
-      dispatch(uiActions.updateStatus({ status: `${gameWinnerName} wins game!` }));
-      // stage = C.GAME_STAGE_COMPLETE;
+      const verb = gameWinnerName === C.PLAYER_USERNAME ? "win" : "wins";
+      dispatch(uiActions.updateStatus({ status: `${gameWinnerName} ${verb} the game!` }));
     } else {
       dispatch(uiActions.updateStatus({ status: `${roundWinnerName} wins round for ${prizeCard} points` }));
     }

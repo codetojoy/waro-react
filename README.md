@@ -16,15 +16,15 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
-* X: status bar doesn't seem right
-* X: now stats doesn't work to reflect game was won?
-* fix "You wins"
-* new game #2 after game #1
+* end of game status bar isn't right 
 * review CSS
     - center main boxes for New Game / Deal 
 * remote strategy
     - use async in getStrategies()
 * store config in firebase
+
+* X: new game #2 after game #1
+* X: fix "You wins"
 * X: handle end-of-game: update config-slice
 * X: consider status bar in a ui-slice, like section 19 
 * X: render hands/kitty with CSS flexbox 

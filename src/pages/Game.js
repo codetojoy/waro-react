@@ -22,24 +22,15 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
-  /*
-  const ui = useSelector((state) => {
-    return state.ui;
-  });
-  */
   useEffect(() => {
     const isGameNew = game.stage === C.GAME_STAGE_NEW;
-    const isGameInProgress = game.stage === C.GAME_STAGE_IN_PROGRESS;
     const isGameOver = game.stage === C.GAME_STAGE_COMPLETE;
-    let status = "";
     if (isGameNew) {
-      status = C.STATUS_GAME_NEW;
+      const status = C.STATUS_GAME_NEW;
       dispatch(uiActions.updateStatus({ status }));
-    } else if (isGameInProgress) {
-      // status = C.STATUS_GAME_IN_PROGRESS;
     } else if (isGameOver) {
       dispatch(configActions.playerWinsGame({ name: game.gameWinnerName }));
-      status = C.STATUS_GAME_OVER;
+      const status = C.STATUS_GAME_OVER;
       dispatch(uiActions.updateStatus({ status }));
     }
   }, [game, dispatch]);
@@ -60,6 +51,7 @@ const Game = (props) => {
         <div>
           <Players players={game.players} isTransparent={isTransparent} />
         </div>
+        <Button onClick={dealHandler}>Deal</Button>
       </div>
     );
   } else {

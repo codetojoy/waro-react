@@ -17,7 +17,7 @@ export const playRound = ({ userBid }) => {
     const [user, computerPlayers] = Players.findPlayerByName(game.players, C.PLAYER_USERNAME);
     const prizeCard = game.kitty.cards[0];
     const newKittyCards = game.kitty.cards.slice(1);
-    const computerBids = Strategy.getBids(computerPlayers, prizeCard);
+    const computerBids = await Strategy.getBids(computerPlayers, prizeCard);
     const bids = [...computerBids, { name: user.name, bidValue: userBid }];
     const roundWinnerName = Round.findRoundWinner(bids);
     const tmpNewPlayers = Round.applyBids(game.players, bids);

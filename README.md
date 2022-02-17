@@ -20,9 +20,10 @@ Todo:
 * review CSS
     - center main boxes for New Game / Deal 
 * remote strategy
-    - use async in getStrategies()
+    - integrate in with NextCard
 * store config in firebase
 
+* X use async in getStrategies()
 * X: new game #2 after game #1
 * X: fix "You wins"
 * X: handle end-of-game: update config-slice

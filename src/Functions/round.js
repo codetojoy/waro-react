@@ -1,5 +1,3 @@
-// import * as C from "../C";
-
 export const applyBids = (players, bids) => {
   const newPlayers = players.map((p) => {
     const bid = bids.find((b) => b.name === p.name).bidValue;
@@ -17,16 +15,6 @@ export const applyRound = (players, winnerName, prizeCard) => {
   });
   return newPlayers;
 };
-
-/*
-export const applyLastRound = (players, gameWinnerName) => {
-  const newPlayers = players.map((p) => {
-    const newPlayer = p.name === gameWinnerName ? winsGame(p) : p;
-    return newPlayer;
-  });
-  return newPlayers;
-};
-*/
 
 export const findRoundWinner = (bids) => {
   let winner = null;

@@ -23,6 +23,7 @@ const buildPlayers = (config) => {
   return players;
 };
 
+/*
 const findPlayer = (allPlayers, targetPlayerName) => {
   let user = null;
   let players = [];
@@ -35,14 +36,13 @@ const findPlayer = (allPlayers, targetPlayerName) => {
   });
   return [user, players];
 };
+*/
 
 export const gameSlice = createSlice({
   name: "game",
   initialState: initGameState,
   reducers: {
-    noOp(state, action) {
-      console.log(`TRACER game reducer no-op`);
-    },
+    /*
     playRound(state, action) {
       const obj = action.payload;
       const userBid = obj.userBid;
@@ -65,6 +65,22 @@ export const gameSlice = createSlice({
         state.status = `${roundWinnerName} wins round for ${prizeCard} points`;
       }
     },
+    */
+    updateStateForRound(state, action) {
+      const obj = action.payload;
+      if (obj.kittyCards) {
+        state.kitty.cards = obj.kittyCards;
+      }
+      if (obj.players) {
+        state.players = obj.players;
+      }
+      if (obj.stage) {
+        state.stage = obj.state;
+      }
+      if (obj.gameWinnerName) {
+        state.gameWinnerName = obj.gameWinnerName;
+      }
+    },
     newGame(state, action) {
       const obj = action.payload;
       const config = obj.config;
@@ -82,7 +98,7 @@ export const gameSlice = createSlice({
         }
       }
       state.stage = C.GAME_STAGE_IN_PROGRESS;
-      state.status = "Your turn";
+      // state.status = "Your turn";
       state.gameWinnerName = "";
     },
   },

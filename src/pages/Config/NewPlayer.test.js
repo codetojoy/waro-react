@@ -7,6 +7,8 @@ import { store } from "../../store/index.js";
 
 describe("NewPlayer component", () => {
   test("should render default info", async () => {
+    // import { Provider } from "react-redux";
+    // import { BrowserRouter } from "react-router-dom";
     // test
     render(
       <Provider store={store}>

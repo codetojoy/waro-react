@@ -21,3 +21,8 @@ export const GAME_STAGE_COMPLETE = "complete";
 export const CSS_AMBER_BUTTON = "buttonAmber";
 export const CSS_GREEN_BUTTON = "buttonGreen";
 export const CSS_DEFAULT_BUTTON = "buttonDefault";
+
+export const STATUS_WELCOME = "Welcome to WarO React";
+export const STATUS_CONFIG = "Configure players";
+export const STATUS_STATS = "Player stats";
+export const STATUS_ABOUT = "About WarO React";

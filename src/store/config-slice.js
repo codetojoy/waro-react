@@ -32,7 +32,7 @@ export const initConfigState = {
       isUser: true,
     },
   ],
-  numCards: 32,
+  numCards: 12,
   visibleStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD],
   allStrategies: [C.STRATEGY_MAX_CARD, C.STRATEGY_MIN_CARD, C.STRATEGY_NEXT_CARD, C.STRATEGY_UI],
   isTransparent: true,

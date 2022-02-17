@@ -1,13 +1,15 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import { configActions } from "../../store/config-slice";
+import { uiActions } from "../../store/ui-slice";
 
 import * as C from "../../C";
 import * as Log from "../../Log";
 
 import Button from "../../components/UI/Button";
+import Status from "../../components/UI/Status";
 
 import classes from "./Config.module.css";
 
@@ -20,12 +22,9 @@ const Config = (props) => {
   const config = useSelector((state) => {
     return state.config;
   });
-  /*
-  const testClickHandler = (event) => {
-    Log.log(`Config.tCH`);
-    dispatch(configActions.playerWinsGame({ name: "Mozart" }));
-  };
-  */
+  useEffect(() => {
+    dispatch(uiActions.updateStatus({ status: C.STATUS_CONFIG }));
+  });
   const newPlayerHandler = (event) => {
     history.push("/config/player/new");
   };

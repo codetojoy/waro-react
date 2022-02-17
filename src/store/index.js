@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { gameSlice } from "./game-slice.js";
 import { configSlice } from "./config-slice.js";
+import { gameSlice } from "./game-slice.js";
+import { uiSlice } from "./ui-slice.js";
 
 // store
 
 export const store = configureStore({
-  reducer: { game: gameSlice.reducer, config: configSlice.reducer },
+  reducer: { config: configSlice.reducer, game: gameSlice.reducer, ui: uiSlice.reducer },
 });

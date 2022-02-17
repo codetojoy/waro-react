@@ -13,12 +13,15 @@ import Sandbox from "./pages/Sandbox";
 import NewPlayer from "./pages/Config/NewPlayer";
 import PlayerConfig from "./pages/Config/PlayerConfig";
 
+import Status from "./components/UI/Status";
+
 import "./App.css";
 
 function App() {
   return (
     <div>
       <MainHeader />
+      <Status />
       <Switch>
         <Route path="/" exact>
           <Redirect to="/welcome" />

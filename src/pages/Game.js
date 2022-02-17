@@ -23,6 +23,9 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
+  const ui = useSelector((state) => {
+    return state.ui;
+  });
   useEffect(() => {
     const isGameOver = game.stage === C.GAME_STAGE_COMPLETE;
     Log.log(`Game game over effect: ${isGameOver}`);
@@ -47,7 +50,7 @@ const Game = (props) => {
           <Players players={game.players} isTransparent={isTransparent} />
         </div>
         <div>
-          <Status status={game.status} />
+          <Status />
         </div>
       </div>
     );
@@ -61,7 +64,7 @@ const Game = (props) => {
           <Players players={game.players} isTransparent={isTransparent} />
         </div>
         <div>
-          <Status status={game.status} />
+          <Status />
         </div>
       </div>
     );

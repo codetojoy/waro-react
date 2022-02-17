@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../store/ui-slice";
+
+import * as C from "../C";
+
 const About = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(uiActions.updateStatus({ status: C.STATUS_ABOUT }));
+  });
   return (
     <div>
       <h2>Rules</h2>

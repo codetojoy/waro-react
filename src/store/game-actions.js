@@ -7,23 +7,6 @@ import * as Strategy from "../Functions/strategies";
 import * as Round from "../Functions/round";
 import * as Players from "../Functions/players";
 
-/*
-// TODO: move to ./Functions/players.js
-const findPlayer = (allPlayers, targetPlayerName) => {
-  // TODO: just use find twice with opposite conditions!
-  let target = null;
-  let others = [];
-  allPlayers.forEach((player) => {
-    if (player.name === targetPlayerName) {
-      target = player;
-    } else {
-      others.push(player);
-    }
-  });
-  return [target, others];
-};
-*/
-
 export const playRound = ({ userBid }) => {
   return async (dispatch, getState) => {
     console.log(`new play round with userBid: ${userBid}`);
@@ -42,7 +25,7 @@ export const playRound = ({ userBid }) => {
 
     const isGameOver = newKittyCards.length === 0;
     const gameWinnerName = isGameOver ? Round.findGameWinner(newPlayers) : null;
-    const stage = isGameOver ? C.GAME_STAGE_COMPLETE : game.stage;
+    const stage = isGameOver ? C.GAME_STAGE_COMPLETE : C.GAME_STAGE_IN_PROGRESS;
 
     if (isGameOver) {
       // gameWinnerName = Round.findGameWinner(game.players);

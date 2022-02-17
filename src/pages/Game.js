@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { NavLink, useHistory } from "react-router-dom";
 
 import * as C from "../C";
 import * as Log from "../Log";
@@ -9,9 +8,9 @@ import Kitty from "../components/Player/Kitty";
 
 import { configActions } from "../store/config-slice";
 import { gameActions } from "../store/game-slice";
+import { uiActions } from "../store/ui-slice";
 
 import Button from "../components/UI/Button";
-import Status from "../components/UI/Status";
 
 import classes from "./Game.module.css";
 
@@ -23,17 +22,29 @@ const Game = (props) => {
   const game = useSelector((state) => {
     return state.game;
   });
+  /*
   const ui = useSelector((state) => {
     return state.ui;
   });
+  */
   useEffect(() => {
+    const isGameNew = game.stage === C.GAME_STAGE_NEW;
+    const isGameInProgress = game.stage === C.GAME_STAGE_IN_PROGRESS;
     const isGameOver = game.stage === C.GAME_STAGE_COMPLETE;
-    Log.log(`Game game over effect: ${isGameOver}`);
-    if (isGameOver) {
+    let status = "";
+    if (isGameNew) {
+      status = C.STATUS_GAME_NEW;
+      dispatch(uiActions.updateStatus({ status }));
+    } else if (isGameInProgress) {
+      // status = C.STATUS_GAME_IN_PROGRESS;
+    } else if (isGameOver) {
       dispatch(configActions.playerWinsGame({ name: game.gameWinnerName }));
+      status = C.STATUS_GAME_OVER;
+      dispatch(uiActions.updateStatus({ status }));
     }
   }, [game, dispatch]);
-  Log.logObj("game:: state", game);
+
+  Log.log(`game state stage: ${game.stage}`);
   const isTransparent = config.isTransparent;
   const isNewGame = game.stage === C.GAME_STAGE_NEW;
   const isGameOver = game.stage === C.GAME_STAGE_COMPLETE;
@@ -49,9 +60,6 @@ const Game = (props) => {
         <div>
           <Players players={game.players} isTransparent={isTransparent} />
         </div>
-        <div>
-          <Status />
-        </div>
       </div>
     );
   } else {
@@ -62,9 +70,6 @@ const Game = (props) => {
         </div>
         <div>
           <Players players={game.players} isTransparent={isTransparent} />
-        </div>
-        <div>
-          <Status />
         </div>
       </div>
     );

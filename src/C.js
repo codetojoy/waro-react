@@ -26,3 +26,6 @@ export const STATUS_WELCOME = "Welcome to WarO React";
 export const STATUS_CONFIG = "Configure players";
 export const STATUS_STATS = "Player stats";
 export const STATUS_ABOUT = "About WarO React";
+export const STATUS_GAME_NEW = "Deal cards to begin";
+export const STATUS_GAME_IN_PROGRESS = "Click a card to play";
+export const STATUS_GAME_OVER = "Game over";

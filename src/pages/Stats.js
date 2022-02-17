@@ -16,7 +16,7 @@ const Stats = (props) => {
   });
   const content = config.players.map((p) => {
     return (
-      <div>
+      <div key={p.name}>
         <p>{p.name}</p>
         <p>games won: {p.numGamesWon}</p>
       </div>

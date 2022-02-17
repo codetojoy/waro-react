@@ -16,12 +16,14 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* X: status bar doesn't seem right
+* X: now stats doesn't work to reflect game was won?
 * fix "You wins"
 * new game #2 after game #1
 * review CSS
     - center main boxes for New Game / Deal 
 * remote strategy
-    - this implies using thunks like section 19 
+    - use async in getStrategies()
 * store config in firebase
 * X: handle end-of-game: update config-slice
 * X: consider status bar in a ui-slice, like section 19 

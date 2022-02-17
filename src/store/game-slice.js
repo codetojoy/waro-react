@@ -75,7 +75,7 @@ export const gameSlice = createSlice({
         state.players = obj.players;
       }
       if (obj.stage) {
-        state.stage = obj.state;
+        state.stage = obj.stage;
       }
       if (obj.gameWinnerName) {
         state.gameWinnerName = obj.gameWinnerName;
@@ -98,7 +98,6 @@ export const gameSlice = createSlice({
         }
       }
       state.stage = C.GAME_STAGE_IN_PROGRESS;
-      // state.status = "Your turn";
       state.gameWinnerName = "";
     },
   },

@@ -20,11 +20,11 @@ Todo:
 * new game #2 after game #1
 * review CSS
     - center main boxes for New Game / Deal 
-* handle end-of-game: update config-slice
-* consider status bar in a ui-slice, like section 19 
 * remote strategy
     - this implies using thunks like section 19 
 * store config in firebase
+* X: handle end-of-game: update config-slice
+* X: consider status bar in a ui-slice, like section 19 
 * X: render hands/kitty with CSS flexbox 
 * X: play one round
 * X: set transparency in config 

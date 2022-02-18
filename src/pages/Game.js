@@ -42,11 +42,14 @@ const Game = (props) => {
   const dealHandler = () => {
     dispatch(gameActions.newGame({ config: config }));
   };
-  let content = <p>placeholder</p>;
   if (isNewGame) {
-    content = <Button onClick={dealHandler}>Deal</Button>;
+    return (
+      <div className={classes.game}>
+        <Button onClick={dealHandler}>Deal</Button>
+      </div>
+    );
   } else if (isGameOver) {
-    content = (
+    return (
       <div className={classes.game}>
         <div>
           <Players players={game.players} isTransparent={isTransparent} />
@@ -55,7 +58,7 @@ const Game = (props) => {
       </div>
     );
   } else {
-    content = (
+    return (
       <div className={classes.game}>
         <div>
           <Kitty cards={game.kitty.cards} isTransparent={isTransparent} />
@@ -66,7 +69,6 @@ const Game = (props) => {
       </div>
     );
   }
-  return <div>{content}</div>;
 };
 
 export default Game;

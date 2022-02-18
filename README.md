@@ -16,6 +16,7 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* card buttons vs UI buttons
 * media query
 * publish to web in gh-pages
 * review CSS

@@ -19,8 +19,9 @@ Todo:
 * card buttons vs UI buttons
 * media query
 * publish to web in gh-pages
+    - not as easy as i thought
+    - see blog post about `npm install gh-pages` ???
 * review CSS
-    - center main boxes for New Game / Deal 
 * store config in firebase
 
 * X: end of game status bar isn't right 

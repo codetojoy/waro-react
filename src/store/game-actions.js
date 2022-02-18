@@ -14,10 +14,11 @@ export const playRound = ({ userBid }) => {
     dispatch(uiActions.updateStatus({ status: "fetching bids..." }));
 
     const game = getState().game;
+    const maxCard = getState().config.numCards;
     const [user, computerPlayers] = Players.findPlayerByName(game.players, C.PLAYER_USERNAME);
     const prizeCard = game.kitty.cards[0];
     const newKittyCards = game.kitty.cards.slice(1);
-    const computerBids = await Strategy.getBids(computerPlayers, prizeCard);
+    const computerBids = await Strategy.getBids(computerPlayers, prizeCard, maxCard);
     const bids = [...computerBids, { name: user.name, bidValue: userBid }];
     const roundWinnerName = Round.findRoundWinner(bids);
     const tmpNewPlayers = Round.applyBids(game.players, bids);
@@ -31,7 +32,8 @@ export const playRound = ({ userBid }) => {
       const verb = gameWinnerName === C.PLAYER_USERNAME ? "win" : "wins";
       dispatch(uiActions.updateStatus({ status: `${gameWinnerName} ${verb} the game!` }));
     } else {
-      dispatch(uiActions.updateStatus({ status: `${roundWinnerName} wins round for ${prizeCard} points` }));
+      const verb = roundWinnerName === C.PLAYER_USERNAME ? "win" : "wins";
+      dispatch(uiActions.updateStatus({ status: `${roundWinnerName} ${verb} the round: ${prizeCard} points` }));
     }
     dispatch(
       gameActions.updateStateForRound({

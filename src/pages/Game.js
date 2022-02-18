@@ -30,8 +30,8 @@ const Game = (props) => {
       dispatch(uiActions.updateStatus({ status }));
     } else if (isGameOver) {
       dispatch(configActions.playerWinsGame({ name: game.gameWinnerName }));
-      const status = C.STATUS_GAME_OVER;
-      dispatch(uiActions.updateStatus({ status }));
+      // const status = C.STATUS_GAME_OVER;
+      // dispatch(uiActions.updateStatus({ status }));
     }
   }, [game, dispatch]);
 

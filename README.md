@@ -16,14 +16,13 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
-* max card is hardcoded in remote 
-* end of game status bar isn't right 
 * review CSS
     - center main boxes for New Game / Deal 
-* remote strategy
-    - integrate in with NextCard
 * store config in firebase
 
+* X: end of game status bar isn't right 
+* X: max card is hardcoded in remote 
+* X: remote strategy
 * X use async in getStrategies()
 * X: new game #2 after game #1
 * X: fix "You wins"

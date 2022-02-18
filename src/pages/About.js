@@ -4,13 +4,15 @@ import { uiActions } from "../store/ui-slice";
 
 import * as C from "../C";
 
+import classes from "./About.module.css";
+
 const About = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(uiActions.updateStatus({ status: C.STATUS_ABOUT }));
   });
   return (
-    <div>
+    <div className={classes.about}>
       <h2>Rules</h2>
       <p>Use a deck of N cards with no suits, just natural numbers from 1 to N. (similar to Rack-O)</p>
       <p>Shuffle and deal N cards evenly to X players and a kitty.</p>

@@ -7,5 +7,14 @@
 }
 
 .config {
-  font-size: 2.2rem;
+  font-size: 1.2rem;
+  margin: 2rem;
+  width: 90%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }

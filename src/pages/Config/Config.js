@@ -59,9 +59,11 @@ const Config = (props) => {
 
   return (
     <div className={classes.config}>
-      <ul className={classes.playerList}>{players}</ul>
-      <Button onClick={newPlayerHandler}>new player</Button>
       <form onSubmit={submitHandler}>
+        <fieldset>
+          <legend>Players</legend>
+          <ul className={classes.playerList}>{players}</ul>
+        </fieldset>
         <fieldset>
           <legend>Num Cards</legend>
           <input
@@ -82,9 +84,12 @@ const Config = (props) => {
             type="checkbox"
           ></input>
         </fieldset>
-        <Button dataTestId="saveButton" type="submit">
-          Save
-        </Button>
+        <div className={classes.buttons}>
+          <Button dataTestId="saveButton" type="submit">
+            save
+          </Button>
+          <Button onClick={newPlayerHandler}>new player</Button>
+        </div>
       </form>
       {errorNumCards && <p className="error">illegal num cards</p>}
     </div>

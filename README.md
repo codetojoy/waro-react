@@ -16,6 +16,8 @@ Game rules are [here](Rules.md).
 Todo:
 ---------
 
+* media query
+* publish to web in gh-pages
 * review CSS
     - center main boxes for New Game / Deal 
 * store config in firebase

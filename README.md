@@ -78,3 +78,16 @@ npm install "@reduxjs/toolkit"
 
 * [1] - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
+### workflows
+
+* OCT 2022
+* I had to create a new personal access token on Github which has the scope for workflows.
+* I had to set a new remote url with this:
+
+```
+git remote set-url origin https://codetojoy:ACCESS_TOKEN@github.com/codetojoy/waro-react.git
+```
+
+* see [here](https://stackoverflow.com/a/49007415/12704)
+
+

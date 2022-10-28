@@ -1,0 +1,12 @@
+name: sandbox
+on: 
+  - workflow_dispatch
+  - push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3 
+      - name: greeting
+        run: echo "TRACER 28-OCT-2022 v4 hello from sandbox workflow"

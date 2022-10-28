@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: greeting
-        run: echo "TRACER 28-OCT-2022 v2 hello from sandbox workflow"
+        run: echo "TRACER 28-OCT-2022 v3 hello from sandbox workflow"

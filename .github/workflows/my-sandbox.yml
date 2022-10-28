@@ -1,8 +1,10 @@
 name: sandbox
-on: workflow_dispatch
+on: 
+  - workflow_dispatch
+  - push
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
       - name: greeting
-        run: echo "TRACER hello from sandbox workflow"
+        run: echo "TRACER 28-OCT-2022 v2 hello from sandbox workflow"

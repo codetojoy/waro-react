@@ -15,3 +15,21 @@ jobs:
 
       - name: test
         run: ./test.sh
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3 
+
+      - name: install
+        run: npm ci 
+
+      - name: test
+        run: ./test.sh
+
+      - name: build
+        run: ./build.sh
+
+      - name: deploy
+        run: echo "TRACER deploying ..."

@@ -17,6 +17,7 @@ jobs:
         run: ./test.sh
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -24,9 +25,6 @@ jobs:
 
       - name: install
         run: npm ci 
-
-      - name: test
-        run: ./test.sh
 
       - name: build
         run: ./build.sh

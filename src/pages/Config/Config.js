@@ -9,7 +9,7 @@ import * as C from "../../C";
 import * as Log from "../../Log";
 
 import Button from "../../components/UI/Button";
-import Status from "../../components/UI/Status";
+// import Status from "../../components/UI/Status";
 
 import classes from "./Config.module.css";
 
